@@ -4,3 +4,19 @@
 (filter ['+ '$] '$)
 > [+]
 
+user=> (doc filter)
+-------------------------
+clojure.core/filter
+([pred] [pred coll])
+  Returns a lazy sequence of the items in coll for which
+  (pred item) returns true. pred must be free of side-effects.
+  Returns a transducer when no collection is provided.
+nil
+user=> (filter (not (= % $)) [+ $ +])
+
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: % in this context, compiling:(/private/var/folders/rz/30jmw34n59v76st5464dyqgh0000gn/T/form-init8179524586819670827.clj:1:14)
+
+
+=> (+ (+ (+ (+ (- (+ (+ 1 2) 3) 4) 5) 6) ($ 7 8) 9)
+100
+
