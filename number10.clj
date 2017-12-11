@@ -84,7 +84,7 @@
   "create all possible combinations of +, - and $ for length number of operations"
   (if (zero? length) 
  	(if (= (multifun (doit n100 s) (filter #(not= '$ %) s)) 100)
-		(println "Sequence: " s " becomes" 100))
+		(println "Sequence: " (conj (into [] (interleave n100 s)) '9) " becomes" 100))
   	(do (next-level (conj s '+) (dec length))
   		(next-level (conj s '-) (dec length))
     	(next-level (conj s '$) (dec length))
