@@ -1,4 +1,4 @@
-(ns user)
+(ns number100)
 
 ;; Write a program that outputs all possibilities to put + or - or nothing between 
 ;; the numbers 1,2,…,9 (in this order) such that the result is 100. 
@@ -47,7 +47,7 @@
 		(eval (concat (take 1 fns) (take 2 numbers)))
 		(multifun 
 		    (conj (drop 2 numbers) (eval (concat (take 1 fns) (take 2 numbers))))
-			(drop 1 fns)
+		    (drop 1 fns)
 		)
 	)
 )
@@ -84,15 +84,13 @@
   "create all possible combinations of +, - and $ for length number of operations"
   (if (zero? length) 
  	(if (= (multifun (doit n100 s) (filter #(not= '$ %) s)) 100)
-		(println "Sequence: " (conj (into [] (interleave n100 s)) '9) " becomes" 100))
-  	(do (next-level (conj s '+) (dec length))
-  		(next-level (conj s '-) (dec length))
-    	(next-level (conj s '$) (dec length))
+          (println "Solution: " (conj (into [] (interleave n100 s)) '9) " becomes" 100))
+  	  (do (next-level (conj s '+) (dec length))
+              (next-level (conj s '-) (dec length))
+              (next-level (conj s '$) (dec length))
 	)
   )
 ) 
 
 
 (println "Solution: " (next-level [] 8))
-;;(println "Solution: " (multifun [12 3] (filter #(not= '$ %) ['$ -])))
-
